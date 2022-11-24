@@ -55,42 +55,73 @@ D7 = X Y Z
 ## Figure -04 8 to 3 Decoder implementation 
 
 ### Procedure
-/* write all the steps invloved */
+Step 1:
+Module Declaration. module is a keywords defined in Verilog .
 
+Step 2:
+Input-Output Delecaration.
+
+8 to 3 Encoder has eight inputs and three outputs. 3 to 8 Decoder has three inputs and eight outputs.
+
+Step 3:
+In the verilog program of encoder we use or gates . In the verilog program of decoder we use only and gates.
+
+Step 4:
+Ending module. endmodule is a keywords defined in Verilog.
 
 
 ### PROGRAM 
+~~~
 /*
 Program for Endocers and Decoders  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: S DHANUSH PRABOO 
+RegisterNumber:  212221230019
 */
+~~~
 
-
-
-
-
+#### Encoders
+~~~
+module encoder(a,b,c,d0,d1,d2,d3,d4,d5,d6,d7);
+input d0,d1,d2,d3,d4,d5,d6,d7;
+output a,b,c;
+or(a,d4,d5,d6,d7);
+or(b,d2,d3,d6,d7);
+or(c,d1,d3,d5,d7);
+endmodule
+~~~
+#### Decoders
+~~~
+module decoder(d0,d1,d2,d3,d4,d5,d6,d7,a,b,c);
+input a,b,c;
+output d0,d1,d2,d3,d4,d5,d6,d7;
+assign d0=(~a & ~b & ~c);
+assign d1=(~a & ~b & c);
+assign d2=(~a & b & ~c);
+assign d3=(~a &b & c);
+assign d4=(a & ~b & ~c);
+assign d5=(a & ~b & c);
+assign d6=(a & b & ~c);
+assign d7=(a & b &c);
+endmodule
+~~~
 
 ### RTL LOGIC  
-
-
-
-
-
-
-
+#### Encoders
+![image](https://user-images.githubusercontent.com/94426323/203726573-ed042748-8918-4f34-bc3e-11aca86ae3e3.png)
+#### Decoders
+![image](https://user-images.githubusercontent.com/94426323/203726639-7ca325de-5ab9-4490-ba85-2cd09a602305.png)
 
 ### TIMING DIGRAMS  
-
-
-
-
+#### Encoders
+![image](https://user-images.githubusercontent.com/94426323/203726734-e8f3c296-8bb1-4170-bade-e5fe5c2d4e77.png)
+#### Decoders
+![image](https://user-images.githubusercontent.com/94426323/203726757-21e956fe-3803-4616-b44f-34f4ec2b2d52.png)
 
 ### TRUTH TABLE 
+#### Encoders
+![image](https://user-images.githubusercontent.com/94426323/203726818-6ba22cd4-af2f-4393-9e71-4f51c8ab8aa3.png)
+#### Decoders
+![image](https://user-images.githubusercontent.com/94426323/203726864-ca24b216-6b2c-4a9d-b3a8-d420538f964d.png)
 
-
-
-
-
-
-### RESULTS 
+### RESULT
+Implementation of 8 to 3 Encoder and 3 to 8 Decoder is done using verilog and its outputs is validated.
